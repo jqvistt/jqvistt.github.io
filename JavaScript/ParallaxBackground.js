@@ -1,5 +1,12 @@
 const svgContainer = document.getElementById("ParallaxBackground");
 
+function preloadImages() {
+  for (let i = 1; i <= 3; i++) {
+    const img = new Image();
+    img.src = `Assets/ParallaxBackgroundSVG/Tree${i}.svg`;
+  }
+}
+
 function createRandomSVG() {
   const BGTreeSvgElement = document.createElement("div");
   BGTreeSvgElement.classList.add("BGTreeSvgElement");
@@ -14,10 +21,6 @@ function createRandomSVG() {
   BGTreeSvgElement.style.top = `${20 * randomScale}vw`;
 
   const baseDuration = 15; // Adjust the duration
-
-  // Adjust the lightness based on the scale
-  const lightness = 70 - randomScale * 20; // Adjust the range as needed
-  BGTreeSvgElement.style.filter = `brightness(${lightness}%)`;
 
   BGTreeSvgElement.style.animation = `moveLeft ${
     baseDuration / randomScale
@@ -35,24 +38,4 @@ function generateRandomSVGs() {
     createRandomSVG();
   }, 200);
 }
-
-function generateDust() {
-  const DustElement = document.createElement("i");
-  DustElement.classList.add("glyphicon");
-  DustElement.classList.add("glyphicon-stop");
-  DustElement.classList.add("BGDustElement");
-  DustElement.style.left = `${Math.floor(Math.random() * 100) + 1}vw`;
-  DustElement.style.top = `${Math.floor(Math.random() * 100) + 1}vh`;
-
-  const randomScale = Math.random() * (1.5 - 0.5) + 0.5;
-  DustElement.style.transform = `scale(${randomScale})`;
-}
-
-function generateRandomDust() {
-  setInterval(() => {
-    generateDust();
-  }, 200);
-}
-
 generateRandomSVGs();
-generateRandomDust();

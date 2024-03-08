@@ -44,112 +44,176 @@ body {
   transition: opacity 1.5s ease-in-out; /* Set the transition property for opacity */
 }
 
+#menuButton {
+  position: fixed;
+  margin: 20px;
+  opacity: 60%;
+}
+
+#menuButton:hover {
+  opacity: 100%;
+  cursor: pointer;
+  scale: 1.1;
+}
+
+#menuButton:active {
+  opacity: 60%;
+  cursor: pointer;
+  scale: 1;
+}
+
 .fade-in {
   opacity: 1; /* When the 'fade-in' class is added, opacity becomes 1 */
+}
+
+.section {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  width: 100vw;
+  height: 100vh;
+
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* BELOW COMES ALL THE CSS THAT DIFFERS WHETHER YOURE ON MOBILE OR DESKTOP */
 
 @media screen and (orientation: portrait) {
-  /* PORTRAIT CSS */
-
-  #mainheader {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 8vw;
-
-    color: whitesmoke;
-
-    height: 100vh;
-    width: 100vw;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    animation: float 4s ease-in-out infinite;
-  }
 }
 
 @media screen and (orientation: landscape) {
   /* LANDSCAPE CSS */
+}
 
-  .topContainer {
-    margin: 0 0 0 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.topContainer {
+  margin: 0 0 0 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  #mainheader {
-    font-family: "IBM Plex Mono", monospace;
-    margin: 0 0 0 0;
-    display: grid;
-    animation: float 4s ease-in-out infinite;
-  }
+#mainheader {
+  font-family: "IBM Plex Mono", monospace;
+  margin: 0 0 0 0;
+  display: grid;
+  animation: float 4s ease-in-out infinite;
+}
 
-  #mainheader #name {
-    font-size: 4vw;
-    grid-column: 1;
-    grid-row: 1;
-    color: whitesmoke;
-  }
+#mainheader #name {
+  font-size: 4vw;
+  grid-column: 1;
+  grid-row: 1;
+  color: whitesmoke;
 
-  #mainheader #jobTitle {
-    font-size: 2vw;
-    grid-column: 1;
-    grid-row: 2;
-    color: rgb(220, 236, 245);
-  }
+  transform: translateX(-500vh);
 
-  #scrollDownPrompt {
-    grid-column: 1;
-    grid-row: 3;
-    scale: 50%;
-    margin: auto;
-    margin-top: 20vh;
+  transition: transform 1.5s ease-in-out;
+}
 
-    animation: bounce 2s ease-in-out infinite;
+#mainheader #name.slide-in {
+  transform: translateX(0px);
+}
 
-    transition: opacity 1.5s ease-in-out, bottom 0.5s ease-in-out;
-    opacity: 0;
-  }
+#mainheader #jobTitle {
+  font-size: 2vw;
+  grid-column: 1;
+  grid-row: 2;
+  color: rgb(220, 236, 245);
+  transform: translateX(500vh);
+  transition: transform 1.5s ease-in-out;
+}
 
-  #scrollDownPrompt.fade-in {
-    opacity: 1;
-  }
+#mainheader #jobTitle.slide-in {
+  transform: translateX(0px);
+}
 
-  #ParallaxBackground {
-    background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgb(28, 28, 43) 100%);
-    position: fixed; /* Use fixed positioning to cover the entire viewport */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -10; /* Set z-index to a lower value to place it behind other elements */
-  }
+#scrollDownPrompt {
+  grid-column: 1;
+  grid-row: 3;
+  scale: 50%;
+  margin: auto;
+  margin-top: 20vh;
 
-  #Ground {
-    background: rgb(5, 5, 5);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-  }
+  animation: bounce 2s ease-in-out infinite;
 
-  .BGTreeSvgElement {
-    position: absolute;
-    will-change: transform;
-  }
+  transition: opacity 1.5s ease-in-out, bottom 0.5s ease-in-out;
+  opacity: 0;
+}
 
-  .blurFilterDiv {
-    z-index: -1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    backdrop-filter: blur(10px);
-  }
+#scrollDownPrompt.fade-in {
+  opacity: 1;
+}
+
+#ParallaxBackground {
+  background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgb(28, 28, 43) 100%);
+  position: fixed; /* Use fixed positioning to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10; /* Set z-index to a lower value to place it behind other elements */
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#Ground {
+  fill: rgb(5, 5, 5);
+  position: fixed; /* Use fixed positioning to cover the entire viewport */
+  top: 50%;
+  width: 100%;
+}
+
+.BGTreeSvgElement {
+  position: absolute;
+  will-change: transform;
+}
+
+.blurFilterDiv {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+}
+
+.introductionDiv {
+  display: grid;
+  column-gap: 40px;
+  column-count: 2;
+  column-width: 33vw;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8vw;
+  margin: 100px 80px 0px 100px;
+}
+
+#introductionTitle {
+  font-size: 4vw;
+  grid-column: 1;
+  grid-row: 1;
+  color: whitesmoke;
+}
+
+#introduction1 {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: large;
+  color: whitesmoke;
+  display: flex;
+}
+#introduction2 {
+  grid-column: 2;
+  grid-row: 3;
+  font-size: large;
+  color: whitesmoke;
+  display: flex;
+}
+#introduction3 {
+  grid-column: 1;
+  grid-row: 4;
+  font-size: large;
+  color: whitesmoke;
+  display: flex;
 }

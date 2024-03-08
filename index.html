@@ -11,21 +11,53 @@
     />
     <link rel="stylesheet" type="text/css" href="Style/StyleSheet.css" />
   </head>
+
   <body>
-    <div class="topContainer">
-      <div id="mainheader">
-        <h1 id="name">Joakim Lönnqvist</h1>
-        <span id="jobTitle">Game Developer - Technical Artist</span>
-        <img src="Assets/Icons/ScrollDownMouse.svg" id="scrollDownPrompt" />
+    <img src="Assets/Icons/menu.svg" id="menuButton" />
+
+    <!-- START BEGINNING -->
+    <div class="section">
+      <div class="topContainer">
+        <div id="mainheader">
+          <h1 id="name">Joakim Lönnqvist</h1>
+          <span id="jobTitle">Game Developer - Technical Artist</span>
+          <img src="Assets/Icons/ScrollDownMouse.svg" id="scrollDownPrompt" />
+        </div>
+      </div>
+
+      <!-- <div class="blurFilterDiv"></div> -->
+      <div class="ParallaxBackground" id="ParallaxBackground">
+        <div id="Ground"></div>
       </div>
     </div>
-
-    <div class="blurFilterDiv"></div>
-    <div class="ParallaxBackground" id="ParallaxBackground">
-      <div id="Ground"></div>
-
-      <script src="JavaScript/ParallaxBackground.js"></script>
+    <!-- START END -->
+    <!-- INTRODUCTION BEGINNING -->
+    <div class="section">
+      <div class="introductionDiv">
+        <h1 id="introductionTitle">Introduction</h1>
+        <span id="introduction1">
+          Hello! Welcome to my resumé. My name is Joakim, and I'm a young,
+          enthusiastic game developer. To be more precise I focus on techincal
+          art.
+        </span>
+        <span id="introduction2">
+          In my free time, I listen to A LOT of music, I even write my own
+          songs! You can find me on spotify, or any other streaming platform
+          like soundcloud, youtube or iTunes under the name "BUNKER".
+        </span>
+        <span id="introduction3">
+          I'm very eager to learn more about art and programming, and I never
+          say no to an opportunity to help!
+        </span>
+      </div>
     </div>
+    <!-- INTRODUCTION END  -->
+
+    <!-- EXPERIENCE START -->
+    <div class="section"></div>
+    <!-- EXPERIENCE END -->>
+
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/ScrollOpacity.js"></script>
   </body>
-  <script src="JavaScript/main.js"></script>
 </html>
