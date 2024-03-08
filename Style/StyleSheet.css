@@ -1,4 +1,4 @@
-@import url("https://fonts.cdnfonts.com/css/cascadia-code");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 @keyframes moveLeft {
   to {
@@ -6,9 +6,41 @@
   }
 }
 
+@keyframes float {
+  0% {
+    text-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    text-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-20px);
+  }
+  100% {
+    text-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
 body {
   background-color: black;
   opacity: 0; /* Initial opacity set to 0 */
+  overflow-x: hidden;
   transition: opacity 1.5s ease-in-out; /* Set the transition property for opacity */
 }
 
@@ -16,36 +48,108 @@ body {
   opacity: 1; /* When the 'fade-in' class is added, opacity becomes 1 */
 }
 
-#ParallaxBackground {
-  background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgb(23, 15, 46) 100%);
-  position: fixed; /* Use fixed positioning to cover the entire viewport */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10; /* Set z-index to a lower value to place it behind other elements */
+/* BELOW COMES ALL THE CSS THAT DIFFERS WHETHER YOURE ON MOBILE OR DESKTOP */
+
+@media screen and (orientation: portrait) {
+  /* PORTRAIT CSS */
+
+  #mainheader {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 8vw;
+
+    color: whitesmoke;
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: float 4s ease-in-out infinite;
+  }
 }
 
-#Ground {
-  background: rgb(5, 5, 5);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 50vh;
-}
+@media screen and (orientation: landscape) {
+  /* LANDSCAPE CSS */
 
-.BGTreeSvgElement {
-  position: absolute;
-  will-change: transform;
-}
+  .topContainer {
+    margin: 0 0 0 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.blurFilterDiv {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(10px);
+  #mainheader {
+    font-family: "IBM Plex Mono", monospace;
+    margin: 0 0 0 0;
+    display: grid;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  #mainheader #name {
+    font-size: 4vw;
+    grid-column: 1;
+    grid-row: 1;
+    color: whitesmoke;
+  }
+
+  #mainheader #jobTitle {
+    font-size: 2vw;
+    grid-column: 1;
+    grid-row: 2;
+    color: rgb(220, 236, 245);
+  }
+
+  #scrollDownPrompt {
+    grid-column: 1;
+    grid-row: 3;
+    scale: 50%;
+    margin: auto;
+    margin-top: 20vh;
+
+    animation: bounce 2s ease-in-out infinite;
+
+    transition: opacity 1.5s ease-in-out, bottom 0.5s ease-in-out;
+    opacity: 0;
+  }
+
+  #scrollDownPrompt.fade-in {
+    opacity: 1;
+  }
+
+  #ParallaxBackground {
+    background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgb(28, 28, 43) 100%);
+    position: fixed; /* Use fixed positioning to cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10; /* Set z-index to a lower value to place it behind other elements */
+  }
+
+  #Ground {
+    background: rgb(5, 5, 5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+  }
+
+  .BGTreeSvgElement {
+    position: absolute;
+    will-change: transform;
+  }
+
+  .blurFilterDiv {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+  }
 }
