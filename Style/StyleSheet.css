@@ -1,0 +1,51 @@
+@import url("https://fonts.cdnfonts.com/css/cascadia-code");
+
+@keyframes moveLeft {
+  to {
+    transform: translateX(-400vh);
+  }
+}
+
+body {
+  background-color: black;
+  opacity: 0; /* Initial opacity set to 0 */
+  transition: opacity 1.5s ease-in-out; /* Set the transition property for opacity */
+}
+
+.fade-in {
+  opacity: 1; /* When the 'fade-in' class is added, opacity becomes 1 */
+}
+
+#ParallaxBackground {
+  background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgb(23, 15, 46) 100%);
+  position: fixed; /* Use fixed positioning to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10; /* Set z-index to a lower value to place it behind other elements */
+}
+
+#Ground {
+  background: rgb(5, 5, 5);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+}
+
+.BGTreeSvgElement {
+  position: absolute;
+  will-change: transform;
+}
+
+.blurFilterDiv {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+}
