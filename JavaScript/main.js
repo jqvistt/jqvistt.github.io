@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setTimeout(function () {
     nameElement.classList.add("slide-in");
-  }, 500);
+  }, 100);
 
   setTimeout(function () {
     jobTitleElement.classList.add("slide-in");
-  }, 800);
+  }, 200);
 });
 
 function DisplayScrollDownPrompt() {

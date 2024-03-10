@@ -10,10 +10,20 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
     <link rel="stylesheet" type="text/css" href="Style/StyleSheet.css" />
+    <link rel="icon" href="Assets/Icons/favicon.svg" sizes="any" type="image/svg+xml">
+
   </head>
 
   <body>
-    <img src="Assets/Icons/menu.svg" id="menuButton" />
+
+    <div id="background"></div>
+
+
+    <div class="menu">
+      <img src="Assets/Icons/menu.svg" id="menuButton" />
+      <div id="menuBox"></div>
+    </div>
+    
 
     <!-- START BEGINNING -->
     <div class="section">
@@ -25,39 +35,44 @@
         </div>
       </div>
 
-      <!-- <div class="blurFilterDiv"></div> -->
-      <div class="ParallaxBackground" id="ParallaxBackground">
-        <div id="Ground"></div>
-      </div>
+  
     </div>
     <!-- START END -->
     <!-- INTRODUCTION BEGINNING -->
     <div class="section">
       <div class="introductionDiv">
-        <h1 id="introductionTitle">Introduction</h1>
+        <h1 id="introductionTitle">Introduction &#128075;</h1>
         <span id="introduction1">
           Hello! Welcome to my resumé. My name is Joakim, and I'm a young,
           enthusiastic game developer. To be more precise I focus on techincal
           art.
         </span>
         <span id="introduction2">
-          In my free time, I listen to A LOT of music, I even write my own
-          songs! You can find me on spotify, or any other streaming platform
-          like soundcloud, youtube or iTunes under the name "BUNKER".
+          In my free time, I listen to a lot of music, I even write my own
+          songs! You can find me and my band on Spotify, or any other streaming platform
+          like SoundCloud, YouTube or iTunes under the name "BUNKER". Other hobbies include 3D-modelling, 3D-design and printing as well as some development.
         </span>
         <span id="introduction3">
-          I'm very eager to learn more about art and programming, and I never
-          say no to an opportunity to help!
+          I'm very eager to both learn and teach more about art and programming, and I rarely
+          say no to an opportunity to help! Together we are the strongest!
         </span>
       </div>
     </div>
     <!-- INTRODUCTION END  -->
 
     <!-- EXPERIENCE START -->
-    <div class="section"></div>
+    <div class="section">
+      <div class="skillDiv">
+        <h1 id="skillTitle">Skills &#128295;</h1>
+        <img src="Assets/Icons/adobe-photoshop-2.svg" alt="" id="photoshopIcon">
+        <img src="Assets/Icons/inkscape-logo-1.svg" alt="" id="inkscapeIcon">
+        <img src="Assets/Icons/blender-2.svg" alt="" id="blenderIcon">
+      </div>
+    </div>
     <!-- EXPERIENCE END -->>
 
     <script src="JavaScript/main.js"></script>
     <script src="JavaScript/ScrollOpacity.js"></script>
+    <script src="JavaScript/SideMenu.js"></script>
   </body>
 </html>

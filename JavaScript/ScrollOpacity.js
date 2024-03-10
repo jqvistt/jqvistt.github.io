@@ -40,17 +40,6 @@ window.addEventListener("scroll", function () {
   updateOpacity();
 });
 
-// Scroll to the next section when the user clicks
-document.addEventListener("click", function () {
-  const currentSection = getCurrentSection();
-  if (currentSection) {
-    const nextSection = currentSection.nextElementSibling;
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-});
-
 // Scroll to the top when the page is reloaded
 window.onload = function () {
   window.scrollTo(0, 0);

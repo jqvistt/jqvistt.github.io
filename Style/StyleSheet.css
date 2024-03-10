@@ -38,28 +38,72 @@
 }
 
 body {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   opacity: 0; /* Initial opacity set to 0 */
   overflow-x: hidden;
   transition: opacity 1.5s ease-in-out; /* Set the transition property for opacity */
+  user-select: none;
+}
+
+#background{
+
+  position: fixed;
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(6,19,40,1) 32%, rgba(3,85,75,1) 100%);
+  height: 100vh;
+  width: 100vw;
+  margin: 0 0 0 0;
+  z-index: -100;
+}
+
+.menu{
+
+  position: fixed;
+
 }
 
 #menuButton {
   position: fixed;
   margin: 20px;
   opacity: 60%;
+  transition: transform 0.5s ease-in-out;
 }
 
 #menuButton:hover {
   opacity: 100%;
   cursor: pointer;
-  scale: 1.1;
+  scale: 1;
 }
 
 #menuButton:active {
   opacity: 60%;
   cursor: pointer;
   scale: 1;
+}
+
+#menuBox {
+  z-index: 10000;
+  position: fixed;
+
+  background: black;
+
+  top: 0;
+  left: 0;
+  width: 20vw;
+  height: 100vh;
+  transform: translateX(-20vw);
+  transition: transform 0.5s ease-in-out; /* Include background in the transition */
+} 
+
+
+
+#menuBox.open {
+  transform: translateX(0vw);
+}
+
+#menuButton.open{
+
+  transform: translateX(20vw);
+
 }
 
 .fade-in {
@@ -102,6 +146,7 @@ body {
 
 #mainheader #name {
   font-size: 4vw;
+  text-align: center;
   grid-column: 1;
   grid-row: 1;
   color: whitesmoke;
@@ -117,6 +162,7 @@ body {
 
 #mainheader #jobTitle {
   font-size: 2vw;
+  text-align: center;
   grid-column: 1;
   grid-row: 2;
   color: rgb(220, 236, 245);
@@ -145,59 +191,31 @@ body {
   opacity: 1;
 }
 
-#ParallaxBackground {
-  background: linear-gradient(0deg, rgb(0, 0, 0) 50%, rgb(28, 28, 43) 100%);
-  position: fixed; /* Use fixed positioning to cover the entire viewport */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -10; /* Set z-index to a lower value to place it behind other elements */
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-#Ground {
-  fill: rgb(5, 5, 5);
-  position: fixed; /* Use fixed positioning to cover the entire viewport */
-  top: 50%;
-  width: 100%;
-}
-
-.BGTreeSvgElement {
-  position: absolute;
-  will-change: transform;
-}
-
-.blurFilterDiv {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(10px);
-}
-
 .introductionDiv {
+
+  z-index: 1;
+  grid-template-columns: 33vw 33vw;
   display: grid;
+
+  align-items: center;
+  justify-content: center;
   column-gap: 40px;
-  column-count: 2;
-  column-width: 33vw;
   font-family: "IBM Plex Mono", monospace;
   font-size: 8vw;
   margin: 100px 80px 0px 100px;
 }
 
 #introductionTitle {
-  font-size: 4vw;
+  font-size: 3vw;
   grid-column: 1;
   grid-row: 1;
   color: whitesmoke;
+  margin-bottom: 40px;
 }
 
 #introduction1 {
   grid-column: 1;
+  
   grid-row: 2;
   font-size: large;
   color: whitesmoke;
@@ -217,3 +235,61 @@ body {
   color: whitesmoke;
   display: flex;
 }
+
+.skillDiv {
+
+  z-index: 1;
+  grid-template-columns: 33vw 33vw;
+  display: grid;
+
+  align-items: center;
+  justify-content: center;
+  column-gap: 40px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8vw;
+  margin: 100px 80px 0px 100px;
+}
+
+#skillTitle {
+  font-size: 3vw;
+  grid-column: 1;
+  grid-row: 1;
+  color: whitesmoke;
+  margin-bottom: 40px;
+  float: left;
+}
+
+#photoshopIcon{
+  
+  display: inline;
+  grid-column: 1;
+  grid-row: 2;
+
+  transform: scale(5%);
+  transform-origin: 0% 0%;
+
+}
+
+#inkscapeIcon{
+
+  display: inline;
+  grid-column: 2;
+  grid-row: 2;
+
+  transform: scale(13%);
+  transform-origin: 0% 0%;
+
+}
+
+#blenderIcon{
+
+  display: inline;
+  grid-column: 1;
+  grid-row: 2;
+
+  transform: scale(5%);
+  transform-origin: 0% 0%;
+
+}
+
+
