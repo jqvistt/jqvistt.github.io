@@ -1,6 +1,8 @@
 /* COLOUR PALETTE: https://colorhunt.co/palette/f259125c3e94412b6b211832 */
 
 @import url('https://fonts.googleapis.com/css2?family=Eater&family=Tiny5&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+
 
 @keyframes slideIn {
   from {
@@ -41,36 +43,89 @@
 @keyframes floatUp {
     0% {
         transform: translateY(25px);
-        opacity: 0;
     }
     100% {
         transform: translateY(0);
-        opacity: 1;
     }
 }
 
 @keyframes floatDown {
     0% {
         transform: translateY(0);
-        opacity: 1;
     }
     100% {
         transform: translateY(25px);
-        opacity: 0;
     }
 }
 
+@keyframes flashGreen {
+    0% {
+        color: #00ff00;
+        transform: scale(1.1);
+    }
+    50% {
+        color: #00ff00;
+        transform: scale(1.2);
+    }
+    100% {
+        color: var(--text-color);
+        transform: scale(1);
+    }
+}
+
+@keyframes flashRed {
+    0% {
+        color: #ff0000; 
+        transform: scale(1.1);
+    }
+    50% {
+        color: #ff0000;
+        transform: scale(1.2);
+    }
+    100% {
+        color: var(--text-color);
+        transform: scale(1);
+    }
+}
+
+.text-flash-green-long {
+    animation: flashGreen 1s ease-out forwards;
+}
+
+.text-flash-green-short {
+    animation: flashGreen 0.5s ease-out forwards;
+}
+
+
+.text-flash-red-long {
+    animation: flashRed 1s ease-out forwards;
+}
+
+.text-flash-red-short {
+    animation: flashRed 0.5s ease-out forwards;
+}
+
 .shake-horizontal {
+    
+    width: calc(32px * 4);
+    height: calc(32px * 4);
+
     animation: horizontal-shaking 0.2s;
-    transform-origin:center center; /* makes sure other transforms arent overwritten */
 }
 
 .floatUp {
-    animation: floatUp 0.5s ease-out forwards;
+    
+    width: calc(32px * 4);
+    height: calc(32px * 4);
+
+    animation: floatUp var(--float-animation-duration) ease-out forwards;
+
 }
 
 .floatDown {
-    animation: floatDown 0.5s ease-out forwards;
+    width: calc(32px * 4);
+    height: calc(32px * 4);
+    animation: floatDown var(--float-animation-duration) ease-out forwards;
 }
 
 .eater-regular {
@@ -85,6 +140,10 @@
     --accent-color: #12B6B2; /* Teal Blue */
     --background-color: #1B1832; /* Dark Navy */
     --text-color: #FFFFFF; /* White */
+
+    --debug-border: 1px solid red;
+
+    --float-animation-duration: 0.5s; // modified with javascript
 }
 
 html, body {
@@ -92,12 +151,12 @@ html, body {
     padding: 0;
     background-color: var(--background-color);
     background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Dark overlay */
-        url('../media/background_image.png');
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Dark overlay */
+    url('../media/background_image.png');
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--text-color);
-    font-family: 'Arial', sans-serif;
+    font-family: "Tiny5", sans-serif;
     width: 100%;
     height: 100%;
     box-shadow: inset 0 0 100px #000000;
@@ -177,6 +236,7 @@ h1{
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 2px;
+    
     width: 65vmin;
     height: 65vmin;
 
@@ -307,63 +367,59 @@ footer {
 }
 
 .hole {
-
-
     display: none;
-    width: 50%;
-    height: 25%;
-    scale: 150%;
-
+    width: 32px;
+    height: 16px;
+    transform: scale(4); 
     background-image: url('../media/hole.png');
-    background-size: cover;
+    background-size: contain;
     background-color: transparent;
     position: relative;
     top: 25%;
-
     animation: grow 1s ease; 
-
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: -o-crisp-edges;
     image-rendering: pixelated;
-    image-rendering: crisp-edges;
-
     z-index: 3;
     overflow: visible;
 }
 
-.hole-front{
 
+.hole-front {
     position: absolute;
-    width: 100%;
-    height:100%;
-    /* background-color: #F25912; */
 
+    width: 100%;
+    height: 100%;
+    
     background-image: url('../media/hole_front.png');
     background-size: cover;
     z-index: 10;
     overflow: visible;
-
+    image-rendering: pixelated;
 }
 
-.gravestone{
-
+.gravestone {
     position: absolute;
+    
+    /* Original sprite size */
     width: 16px;
     height: 16px;
+    
+    /* border: 0.5px solid red; */
 
-    left: 42%;
-    bottom: 110%;
+    /* MESSING WITH TRANSFORM SCALE HERE WILL END IN WRONG PIXEL SIZES */
+    
+    bottom: 85%;
+    left: 25%;
 
-    scale: 3;
-
+    margin: 0;
+    padding: 0;
+    
     background-image: url('../media/gravestone.png');
-    background-size: cover;
-
+    background-size: contain;
 
     z-index: 0;
-
+    image-rendering: pixelated;
 }
+
 
 #difficulty-panel {
     visibility: hidden;
@@ -394,6 +450,8 @@ footer {
     transform: translate(-50%, -50%);
     font-size: 10vw;
     font-family: "Eater", serif;
+
+
     color: var(--primary-color);
 
     text-shadow: 2px 2px 4px #000000;
@@ -401,6 +459,21 @@ footer {
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: var(--text-color);
     z-index: 20;
+}
+
+.ghost-canvas{
+    position: absolute;
+
+    bottom: 20%;
+    left: -2%;
+
+    width: 100%;
+    height: 200%;
+
+    /* border: var(--debug-border); */
+
+    overflow: hidden; /* Hides anything that is a child and outside this area */
+
 }
 
 .ghost-wrapper {
@@ -414,12 +487,57 @@ footer {
 }
 
 .ghost {
-    transform: translateY(-40%);
-
     position: relative;
     width: 32px;
-    height: 32px;
-    scale: 3;
+    height: 32px; 
+
+    pointer-events: none;
+    
+    background-size: contain;
+    background: no-repeat;
+    background-position: center;
+    z-index: 5;
+    overflow: visible;
+
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.skeleton-canvas{
+    position: absolute;
+
+    bottom: 20%;
+    left: -2%;
+
+    width: 100%;
+    height: 200%;
+
+    /* border: var(--debug-border); */
+
+    overflow: hidden; /* Hides anything that is a child and outside this area */
+
+}
+
+.skeleton-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.skeleton {
+    position: relative;
+    width: 32px;
+    height: 32px; 
+
+    pointer-events: none;
+    
     background-size: contain;
     background: no-repeat;
     background-position: center;
